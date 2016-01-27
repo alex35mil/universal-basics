@@ -3,7 +3,7 @@ import Router           from 'react-router';
 import BrowserHistory   from 'react-router/lib/BrowserHistory';
 
 
-export default (params) => {
+export default params => {
 
   const { routes } = params;
 

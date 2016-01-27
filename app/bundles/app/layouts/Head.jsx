@@ -6,7 +6,7 @@ export default class Head extends React.Component {
 
 
   static propTypes = {
-    cssAsset: Type.string
+    cssAsset: Type.string,
   }
 
 

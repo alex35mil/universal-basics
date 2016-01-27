@@ -19,9 +19,9 @@ export default (req, res, next) => {
 
       jsAsset    : getAsset(bundle, 'js'),
       cssAsset   : getAsset(bundle, 'css'),
-      vendorAsset: getAsset('vendor', 'js')
+      vendorAsset: getAsset('vendor', 'js'),
 
-    }
+    },
 
   };
 

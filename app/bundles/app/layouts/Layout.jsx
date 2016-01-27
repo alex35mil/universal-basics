@@ -8,7 +8,7 @@ export default class Layout extends React.Component {
 
 
   static propTypes = {
-    children: Type.object
+    children: Type.object,
   }
 
 

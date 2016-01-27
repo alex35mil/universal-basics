@@ -12,29 +12,29 @@ export default {
 
   entry: {
     app   : './build/bundles/app.js',
-    vendor: vendorDeps.app
+    vendor: vendorDeps.app,
   },
 
   output: {
     path         : './public/assets',
     filename     : '[name]-[chunkhash].js',
-    chunkFilename: '[name]-[chunkhash].js'
+    chunkFilename: '[name]-[chunkhash].js',
   },
 
   resolve: {
     alias: {
       'app'   : path.join(process.cwd(), 'app'),
       'config': path.join(process.cwd(), 'config'),
-      'public': path.join(process.cwd(), 'public')
+      'public': path.join(process.cwd(), 'public'),
     },
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
   },
 
   devtool : false,
   debug   : false,
   progress: true,
   node    : {
-    fs: 'empty'
+    fs: 'empty',
   },
 
   plugins: [
@@ -43,22 +43,22 @@ export default {
       name     : 'vendor',
       chunks   : ['app'],
       filename : 'vendor-[chunkhash].js',
-      minChunks: Infinity
+      minChunks: Infinity,
     }),
     new webpack.DefinePlugin({
-      __CLIENT__   : true,
-      __SERVER__   : false,
-      __DEV__      : false,
-      __DEVTOOLS__ : false,
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
+      '__CLIENT__'  : true,
+      '__SERVER__'  : false,
+      '__DEV__'     : false,
+      '__DEVTOOLS__': false,
+      'process.env' : {
+        'NODE_ENV': JSON.stringify('production'),
+      },
     }),
     new webpack.optimize.DedupePlugin(),
     new Manifest(),
     new ChunkManifest({
       filename        : 'chunk-manifest.json',
-      manifestVariable: '__CHUNKS__'
+      manifestVariable: '__CHUNKS__',
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -66,14 +66,14 @@ export default {
         'warnings'     : false,
         'drop_debugger': true,
         'drop_console' : true,
-        'pure_funcs'   : ['console.log']
-      }
+        'pure_funcs'   : ['console.log'],
+      },
     }),
     new Gzip({
       asset    : '{file}.gz',
       algorithm: 'gzip',
-      regExp   : /\.js$|\.css$/
-    })
+      regExp   : /\.js$|\.css$/,
+    }),
   ],
 
   module: {
@@ -82,14 +82,14 @@ export default {
       { test  : /\.jsx?$/, loader: 'babel?stage=0',  exclude: /node_modules/ },
       {
         test  : /\.styl$/,
-        loader: Extract.extract('style', 'css!autoprefixer?{browsers:["last 2 version"], cascade:false}!stylus')
+        loader: Extract.extract('style', 'css!autoprefixer?{browsers:["last 2 version"], cascade:false}!stylus'),
       },
       {
         test  : /\.css$/,
-        loader: Extract.extract('style', 'css!autoprefixer?{browsers:["last 2 version"], cascade:false}')
-      }
-    ]
-  }
+        loader: Extract.extract('style', 'css!autoprefixer?{browsers:["last 2 version"], cascade:false}'),
+      },
+    ],
+  },
 
 
 }

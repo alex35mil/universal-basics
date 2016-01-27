@@ -2,7 +2,7 @@
 
 require('babel/register')({
   extensions: ['.js', '.jsx'],
-  stage     : 0
+  stage     : 0,
 });
 
 var webpack          = require('webpack');
@@ -29,8 +29,8 @@ var devServer = new WebpackDevServer(compiler, {
     hash    : false,
     version : false,
     chunks  : false,
-    children: false
-  }
+    children: false,
+  },
 });
 
 devServer.listen(serverConfig.devPort, 'localhost', function(err) {

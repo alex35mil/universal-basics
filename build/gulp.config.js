@@ -7,24 +7,24 @@ const _public = './public';
 const _assets = `${_app}/assets`;
 
 
-export default (isDevBuild) => {
+export default isDevBuild => {
 
   return {
 
     webpack: isDevBuild ? webpackDevConfig : webpackProdConfig,
 
     server: {
-      paths: ['./server.app.js']
+      paths: ['./server.app.js'],
     },
 
     copy: {
       from : _assets,
       files: [
         [ '/tinies/favicon.ico', '/' ],
-        [ '/tinies/robots.txt',  '/' ]
+        [ '/tinies/robots.txt',  '/' ],
       ],
-      to: _public
-    }
+      to: _public,
+    },
 
   };
 
